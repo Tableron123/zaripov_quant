@@ -1,8 +1,19 @@
-class LinuxKernel:
-    def __init__(self, distributive, package):
-        self.version = distributive
-        self.package = package
+class Animal:
+    def __init__(self, color, name):
 
-class Debian(LinuxKernel):
-    def __init__(self):
-        super(Debian, "APT")
+        self.color = color
+        self.name = name
+
+    def make_sound(self):
+
+
+        print("I'm an animal")
+
+
+class Dog(Animal):
+    def __init__(self, color, name, master):
+        Animal.__init__(self, color, name)
+        self.master = master
+        
+    def make_sound(self):
+        print('bark')

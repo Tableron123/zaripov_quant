@@ -1,15 +1,23 @@
-catalog = [
-    {'name': 'Смартфон', 'price': 45000, 'rating': 4.8},
-    {'name': 'Чехол', 'price': 500, 'rating': 4.2},
-    {'name': 'Беспроводные наушники', 'price': 7000, 'rating': 4.8},
-    {'name': 'Зарядное устройство', 'price': 1200, 'rating': 4.5},
-]
+def build_query_string(base_url, **kwargs):
+    result = ""
+    args_result = []
+    args_list = list(kwargs.items())
 
-price_sorted = sorted(catalog, key=lambda item: item['price'], reverse=True)
-print(price_sorted)
+    for arg in args_list:
+        print(arg)
+        str_arg = f"{arg[0]} = {arg[1]}"
 
-rating_sorted = sorted(price_sorted, key=lambda item: item['rating'], reverse=False)
-print(rating_sorted)
+        args_result.append(str_arg)
 
-print(rating_sorted)
+    joined_args = "&".join(args_result)
 
+    print(joined_args)
+
+    return base_url + "?" + joined_args
+
+
+print(build_query_string(base_url="https://api.weather.com/v1/forecast/",
+    city="Moscow",
+    days=3,
+    units="metric"
+))
